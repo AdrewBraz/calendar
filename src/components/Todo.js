@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFire, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faFire, faCheck, faTrash } from '@fortawesome/free-solid-svg-icons';
 import actions from '../actions';
 
 const Todo = (props) => {
@@ -14,6 +14,10 @@ const Todo = (props) => {
   const handleChangeStatus = (id) => {
     dispatch(actions.changeTodoStatus(id));
   };
+
+  const handleDelete = (id) => {
+      dispatch(actions.deleteTodo(id))
+  }
 
   const renderText = (status) => {
     if (status === 'important') {
@@ -42,9 +46,12 @@ const Todo = (props) => {
     <Container>
       <Row>
         {renderText(status)}
-        <Col md={3}>
+        <Col md={2}>
           <Button size="sm" variant="success" onClick={() => { handleChangeStatus(id); }}>
             <FontAwesomeIcon icon={faCheck} />
+          </Button>
+          <Button size="sm" variant="danger" onClick={() => { handleDelete(id); }}>
+            <FontAwesomeIcon icon={faTrash} />
           </Button>
         </Col>
       </Row>

@@ -15,11 +15,13 @@ const App = () => {
         <Col>
           <ModalButton />
         </Col>
-        <Col>
+      </Row>
+      <Row>
+      <Col>
           <TodoList todos={todos} />
         </Col>
-        <Modal modal={modal !== 'hide'} />
       </Row>
+      <Modal modal={modal !== 'hide'} />
     </Container>
   );
 };
