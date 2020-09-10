@@ -7,7 +7,7 @@ build:
 	npm run build-app
 
 lint:
-	npx eslint ./src --ext js,jsx
+	npx eslint ./src --ext js,jsx --fix
 
 publish:
 	npm publish

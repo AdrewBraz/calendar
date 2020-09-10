@@ -11,7 +11,7 @@ const ModalButton = () => {
 
   return (
     <Button variant="primary" onClick={handleClick}>Add ToDo</Button>
-  )
-}
+  );
+};
 
 export default ModalButton;

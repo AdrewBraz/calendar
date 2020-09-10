@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { Modal, Spinner, Alert } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import { uniqueId } from 'lodash';
 
 import actions from '../actions';
 
@@ -11,9 +12,12 @@ const AddModal = (props) => {
   const { modal } = props;
 
   const generateOnSubmit = () => async (values) => {
-      const { todo } = values;
-      dispatch(actions.addTodo({todo}))
-      dispatch(actions.modalHide())
+    const { text } = values;
+    const id = uniqueId();
+    const status = 'in progress';
+    const todo = { text, id, status };
+    dispatch(actions.addTodo(todo));
+    dispatch(actions.modalHide());
   };
 
   const closeModal = () => {
@@ -22,10 +26,9 @@ const AddModal = (props) => {
 
   const form = useFormik({
     onSubmit: generateOnSubmit(),
-    initialValues: { todo: '' },
+    initialValues: { text: '' },
     validateOnBlur: false,
   });
-
 
   return (
     <Modal show={modal} onHide={closeModal}>
@@ -35,7 +38,7 @@ const AddModal = (props) => {
       <Modal.Body>
         <form className="form-inline mb-3" onSubmit={form.handleSubmit}>
           <div className="input-group flex-row w-100">
-            <input type="text" name="todo" placeholder='todo' onChange={form.handleChange} onBlur={form.handleBlur} value={form.values.name} className="form-control" />
+            <input type="text" name="text" placeholder="todo" onChange={form.handleChange} onBlur={form.handleBlur} value={form.values.name} className="form-control" />
             <div className="input-group-prepend">
               <button type="submit" disabled={form.isValidating || form.isSubmitting} className=" btn btn-primary btn-sm">
                 {form.isSubmitting ? <Spinner animation="border" /> : 'AddToDO'}

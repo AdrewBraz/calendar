@@ -1,6 +1,7 @@
 // @ts-check
-
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = !isProduction;
@@ -18,10 +19,22 @@ module.exports = {
   },
   output: {
     path: `${__dirname}/dist/public`,
-    publicPath: '/assets/',
+    filename: '[name].js'
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
   },
   plugins: [
     new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+        title: 'Custom template',
+        minify: {
+            collapseWhitespace: true,
+        },
+        template: './src/index.html'
+    }),
   ],
   module: {
     rules: [

@@ -1,8 +1,7 @@
-//@ts-check
+// @ts-check
 import 'core-js';
 import 'regenerator-runtime/runtime';
 import init from './init';
-import './application.scss'
-
+import './application.scss';
 
 init();
