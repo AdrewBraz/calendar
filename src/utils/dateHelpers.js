@@ -13,14 +13,14 @@ import {
 
   export const getDays = (date = new Date()) => eachDayOfInterval(
       {
-          start: startOfWeek(date),
-          end: endOfWeek(date),
+          start: startOfWeek(date, {weekStartsOn: 1}),
+          end: endOfWeek(date, {weekStartsOn: 1}),
       }
   )
 
   export const getWeeks = (date = new Date()) => eachWeekOfInterval(
       {
-          start: startOfMonth(date),
+          start: startOfMonth(date) ,
           end: endOfMonth(date)
       }
   )
@@ -28,8 +28,8 @@ import {
   export const getWeekDays = (date = new Date(), format = 'EEEE') => {
     const arr = eachDayOfInterval(
       {
-        start: startOfWeek(date),
-        end: endOfWeek(date),
+        start: startOfWeek(date, {weekStartsOn: 1}),
+        end: endOfWeek(date, {weekStartsOn: 1}),
       },
     );
     return arr.reduce((accum, day) => [...accum, formatFn(day, format)], []);
