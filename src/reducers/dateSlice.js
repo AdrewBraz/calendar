@@ -1,16 +1,15 @@
 // @ts-check
 import { createSlice } from '@reduxjs/toolkit';
 
-
 const dateSlice = createSlice({
   name: 'date',
   initialState: {
-      currentDate: new Date(),
-      selectedDate: new Date()
+    currentDate: new Date(),
+    selectedDate: new Date(),
   },
   reducers: {
-    selectDate(state, {payload}) {
-        state.selectedDate = payload;
+    selectDate(state, { payload }) {
+      state.selectedDate = payload;
     },
   },
 });

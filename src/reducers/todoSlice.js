@@ -14,10 +14,10 @@ const todoSlice = createSlice({
       const index = state.findIndex((item) => id === item.id);
       state[index].status = 'completed';
     },
-    deleteTodo(state, { payload }){
+    deleteTodo(state, { payload }) {
       const id = payload;
-      return state.filter(item => item.id !== id)
-    }
+      return state.filter((item) => item.id !== id);
+    },
   },
 });
 

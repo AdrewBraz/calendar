@@ -10,7 +10,7 @@ const actions = {
   addTodo,
   changeTodoStatus,
   deleteTodo,
-  selectDate
+  selectDate,
 };
 
 export default actions;

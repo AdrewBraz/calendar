@@ -1,4 +1,4 @@
-//@ts-check
+// @ts-check
 import React from 'react';
 import {
   Container, Row, Col, Button,
@@ -17,8 +17,8 @@ const Todo = (props) => {
   };
 
   const handleDelete = (id) => {
-      dispatch(actions.deleteTodo(id))
-  }
+    dispatch(actions.deleteTodo(id));
+  };
 
   const renderText = (status) => {
     if (status === 'important') {
